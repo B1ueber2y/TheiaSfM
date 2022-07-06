@@ -1,6 +1,22 @@
 Copyright 2015-2016 Chris Sweeney (sweeney.chris.m@gmail.com)
 UC Santa Barbara
 
+Installation
+---------------------
+
+First install the missing package.
+```
+sudo apt-get install -y libopenimageio-dev librocksdb-dev rapidjson-dev freeglut3-dev
+```
+
+Then compile and install.
+```
+mkdir build && cd build
+cmake ..
+make -j4
+sudo make install
+```
+
 What is this library?
 ---------------------
 

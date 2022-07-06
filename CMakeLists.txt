@@ -36,6 +36,8 @@ cmake_minimum_required(VERSION 2.8.3)
 if (COMMAND cmake_policy)
   cmake_policy(SET CMP0003 NEW)
 endif (COMMAND cmake_policy)
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
 # Disable warnings about rpath on MacOS X for now.
 # TODO(cmsweeney): Figure out the proper way to handle this!
