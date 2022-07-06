@@ -43,11 +43,7 @@ macro(THEIA_REPORT_NOT_FOUND REASON_MSG)
   # use the camelcase library name, not uppercase.
   if (Theia_FIND_QUIETLY)
     message(STATUS "Failed to find Theia - " ${REASON_MSG} ${ARGN})
-  else (Theia_FIND_REQUIRED)
-    message(FATAL_ERROR "Failed to find Theia - " ${REASON_MSG} ${ARGN})
   else()
-    # Neither QUIETLY nor REQUIRED, use SEND_ERROR which emits an error
-    # that prevents generation, but continues configuration.
     message(SEND_ERROR "Failed to find Theia - " ${REASON_MSG} ${ARGN})
   endif ()
   return()
