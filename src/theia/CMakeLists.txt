@@ -224,7 +224,7 @@ set(THEIA_LIBRARY_DEPENDENCIES
   flann_cpp
   statx
   stlplus3
-  vlfeat
+  vlfeat_theia
   visual_sfm
 )
 

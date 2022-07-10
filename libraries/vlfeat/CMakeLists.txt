@@ -25,8 +25,8 @@ if (MSVC)
   add_definitions(-DVL_DISABLE_SSE2)
 endif (MSVC)
 
-add_library(vlfeat SHARED ${vl_sources})
-install(TARGETS vlfeat
+add_library(vlfeat_theia SHARED ${vl_sources})
+install(TARGETS vlfeat_theia
   EXPORT  TheiaExport
   RUNTIME DESTINATION bin
   LIBRARY DESTINATION lib${LIB_SUFFIX}
