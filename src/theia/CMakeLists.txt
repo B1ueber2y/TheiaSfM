@@ -226,6 +226,7 @@ set(THEIA_LIBRARY_DEPENDENCIES
   stlplus3
   vlfeat_theia
   visual_sfm
+  OpenImageIO_Util
 )
 
 set(THEIA_LIBRARY_SOURCE
