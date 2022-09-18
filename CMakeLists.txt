@@ -36,7 +36,7 @@ cmake_minimum_required(VERSION 2.8.3)
 if (COMMAND cmake_policy)
   cmake_policy(SET CMP0003 NEW)
 endif (COMMAND cmake_policy)
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
 # Disable warnings about rpath on MacOS X for now.
@@ -163,7 +163,7 @@ endif (CERES_FOUND)
 message("-- Check for OpenImageIO")
 find_package(OpenImageIO REQUIRED)
 if (OPENIMAGEIO_FOUND)
-  message("-- Found OpenImageIO: ${OPENIMAGEIO_INCLUDE_DIRS}")
+  message("-- Found OpenImageIO: ${OPENIMAGEIO_INCLUDE_DIRS}, ${OPENIMAGEIO_LIBRARY}")
 else (OPENIMAGEIO_FOUND)
   message(FATAL_ERROR "Can't find OpenImageIO. Please set OPENIMAGEIO_INCLUDE_DIR & "
     "OPENIMAGEIO_LIBRARY")
