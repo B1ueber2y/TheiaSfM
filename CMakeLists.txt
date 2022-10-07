@@ -38,6 +38,7 @@ if (COMMAND cmake_policy)
 endif (COMMAND cmake_policy)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 # Disable warnings about rpath on MacOS X for now.
 # TODO(cmsweeney): Figure out the proper way to handle this!
