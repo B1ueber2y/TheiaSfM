@@ -227,26 +227,6 @@ bool LiGTPositionEstimator::EstimatePositions(
   VLOG(2) << "Extracting triplets from tracks and calculating BCDs for tracks.";
   FindTripletsForTracks();
 
-//  VLOG(2) << "Calculating BCD for tracks.";
-//  for (const auto& t : triplets_for_tracks_) {
-//    auto t_id = t.first;
-//    auto view_ids = t.second;
-//    for (const auto& vids : view_ids) {
-//      const auto view1 = reconstruction_.View(std::get<0>(vids));
-//      const auto view2 = reconstruction_.View(std::get<1>(vids));
-//      const auto view3 = reconstruction_.View(std::get<2>(vids));
-//      std::tuple<Matrix3d, Matrix3d, Matrix3d> BCD;
-//      CalculateBCDForTrack(view1, view2, view3, t_id, BCD);
-
-////      Eigen::Vector3d shouldnull = std::get<1>(BCD)*view1->Camera().GetPosition() +
-////              std::get<0>(BCD)*view2->Camera().GetPosition() +
-////              std::get<2>(BCD)*view3->Camera().GetPosition();
-////      std::cout<<"shouldnull: "<<shouldnull<<"\n";
-
-//      BCDs_[t_id].push_back(BCD);
-//    }
-//  }
-
   VLOG(2) << "Building the constraint matrix...";
   // Create the linear system based on triplet constraints.
   Eigen::SparseMatrix<double> constraint_matrix;
@@ -524,15 +504,6 @@ void LiGTPositionEstimator::FlipSignOfPositionsIfNecessary(
       position.second *= -1.0;
     }
   }
-}
-
-std::unordered_map<ViewId, Eigen::Vector3d>
-LiGTPositionEstimator::EstimatePositionsWrapper(
-    const std::unordered_map<ViewIdPair, TwoViewInfo>& view_pairs,
-    const std::unordered_map<ViewId, Eigen::Vector3d>& orientation) {
-  std::unordered_map<ViewId, Eigen::Vector3d> positions;
-  EstimatePositions(view_pairs, orientation, &positions);
-  return positions;
 }
 
 }  // namespace theia

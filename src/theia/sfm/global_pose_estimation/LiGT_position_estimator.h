@@ -87,11 +87,6 @@ class LiGTPositionEstimator : public PositionEstimator {
       const std::unordered_map<ViewId, Eigen::Vector3d>& orientation,
       std::unordered_map<ViewId, Eigen::Vector3d>* positions);
 
-  // python
-  std::unordered_map<ViewId, Eigen::Vector3d> EstimatePositionsWrapper(
-      const std::unordered_map<ViewIdPair, TwoViewInfo>& view_pairs,
-      const std::unordered_map<ViewId, Eigen::Vector3d>& orientation);
-
  private:
   // Store the triplet.
   void AddTripletConstraint(const ViewIdTriplet& view_triplet);
@@ -99,7 +94,6 @@ class LiGTPositionEstimator : public PositionEstimator {
   // Sets up the linear system with the constraints that each triplet adds.
   void CreateLinearSystem(Eigen::SparseMatrix<double>* constraint_matrix);
 
-  //void CreateLinearSystem(Eigen::MatrixXd& constraint_matrix);
   void AddTripletConstraintToSparseMatrix(const ViewId view_id1,
       const ViewId view_id2,
       const ViewId view_id3,
