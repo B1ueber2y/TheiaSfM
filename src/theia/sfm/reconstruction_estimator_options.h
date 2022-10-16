@@ -39,6 +39,7 @@
 
 #include "theia/sfm/bundle_adjustment/bundle_adjustment.h"
 #include "theia/sfm/global_pose_estimation/least_unsquared_deviation_position_estimator.h"
+#include "theia/sfm/global_pose_estimation/LiGT_position_estimator.h"
 #include "theia/sfm/global_pose_estimation/linear_position_estimator.h"
 #include "theia/sfm/global_pose_estimation/nonlinear_position_estimator.h"
 #include "theia/util/random.h"
@@ -59,7 +60,7 @@ enum class ReconstructionEstimatorType {
 enum class GlobalRotationEstimatorType {
   ROBUST_L1L2 = 0,
   NONLINEAR = 1,
-  LINEAR = 2
+  LINEAR = 2,
 };
 
 // Global position estimation methods.
@@ -74,6 +75,7 @@ enum class GlobalPositionEstimatorType {
   NONLINEAR = 0,
   LINEAR_TRIPLET = 1,
   LEAST_UNSQUARED_DEVIATION = 2,
+  LIGT = 3,
 };
 
 // Options for the reconstruction estimation.
@@ -156,6 +158,7 @@ struct ReconstructionEstimatorOptions {
   // --------------- Global Position Estimation Options --------------- //
   NonlinearPositionEstimator::Options nonlinear_position_estimator_options;
   LinearPositionEstimator::Options linear_triplet_position_estimator_options;
+  LiGTPositionEstimator::Options ligt_position_estimator_options;
   LeastUnsquaredDeviationPositionEstimator::Options
       least_unsquared_deviation_position_estimator_options;
 
