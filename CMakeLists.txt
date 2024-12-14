@@ -133,12 +133,12 @@ endif ()
 # GFlags. The namespace patch is borrow from Ceres Solver (see license in
 # FindGflags.cmake)
 find_package(Gflags REQUIRED)
-if (GFLAGS_FOUND)
+if (gflags_FOUND)
   message("-- Found Google Flags: ${GFLAGS_INCLUDE_DIRS} in namespace: ${GFLAGS_NAMESPACE}")
   add_definitions(-DTHEIA_GFLAGS_NAMESPACE=${GFLAGS_NAMESPACE})
-else (GFLAGS_FOUND)
+else (gflags_FOUND)
   message(FATAL_ERROR "Can't find Google FLAGS.")
-endif (GFLAGS_FOUND)
+endif (gflags_FOUND)
 
 # Google Logging
 message("-- Check for Google Log")
