@@ -152,7 +152,11 @@ endif (GLOG_FOUND)
 
 # Ceres
 message("-- Check for Ceres")
-find_package(Ceres REQUIRED SuiteSparse)
+find_package(Ceres REQUIRED COMPONENTS SuiteSparse)
+if(${CERES_VERSION} VERSION_LESS "2.2.0")
+    # ceres 2.2.0 changes the interface of local parameterization
+    add_definitions("-DCERES_PARAMETERIZATION_ENABLED")
+endif()
 if (CERES_FOUND)
   message("-- Found Ceres: ${CERES_INCLUDE_DIRS}")
 else (CERES_FOUND)
@@ -171,7 +175,10 @@ else (OPENIMAGEIO_FOUND)
 endif (OPENIMAGEIO_FOUND)
 
 # Suitesparse
-find_package(SuiteSparse REQUIRED)
+find_package(CUDA REQUIRED)
+include_directories(${CUDA_INCLUDE_DIRS})
+find_package(SuiteSparse COMPONENTS CHOLMOD_CUDA)
+
 if (SUITESPARSE_FOUND)
   # On Ubuntu the system install of SuiteSparse (v3.4.0) up to at least
   # Ubuntu 13.10 cannot be used to link shared libraries.

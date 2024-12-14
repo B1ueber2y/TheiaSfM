@@ -49,6 +49,7 @@
 #include "theia/sfm/twoview_info.h"
 #include "theia/sfm/types.h"
 #include "theia/util/timer.h"
+#include "theia/util/parameterization.h"
 
 namespace theia {
 
@@ -96,12 +97,7 @@ void AddCameraParametersToProblem(const bool constant_extrinsic_parameters,
               constant_intrinsics.end(),
               1);
 
-    ceres::SubsetParameterization* subset_parameterization =
-        new ceres::SubsetParameterization(num_intrinsics,
-                                          constant_intrinsics);
-    problem->AddParameterBlock(camera_intrinsics,
-                               num_intrinsics,
-                               subset_parameterization);
+    SetSubsetManifold(num_intrinsics, constant_intrinsics, problem, camera_intrinsics);
   }
 }
 
@@ -216,12 +212,7 @@ BundleAdjustmentSummary BundleAdjustTwoViewsAngular(
   const int kParameterBlockSize = 3;
   problem.AddParameterBlock(info->rotation_2.data(), kParameterBlockSize);
   // Add the position as a parameter block, ensuring that the norm is 1.
-  ceres::LocalParameterization* position_parameterization =
-      new ceres::AutoDiffLocalParameterization<
-          UnitNormThreeVectorParameterization, 3, 3>;
-  problem.AddParameterBlock(info->position_2.data(),
-                            kParameterBlockSize,
-                            position_parameterization);
+  SetSphereManifold<3>(&problem, info->position_2.data());
 
   // Add all the epipolar constraints from feature matches.
   for (const FeatureCorrespondence& match : correspondences) {
