@@ -291,7 +291,7 @@ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/cmake/uninstall.cmake.in"
                "${CMAKE_BINARY_DIR}/cmake/uninstall.cmake"
                IMMEDIATE @ONLY)
 
-add_custom_target(uninstall
+add_custom_target(uninstall_theia
                   COMMAND ${CMAKE_COMMAND} -P ${CMAKE_BINARY_DIR}/cmake/uninstall.cmake)
 
 # Set up install directories. INCLUDE_INSTALL_DIR, LIB_INSTALL_DIR and
