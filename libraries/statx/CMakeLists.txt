@@ -39,7 +39,7 @@ endif (COMMAND cmake_policy)
 project (statx C CXX)
 include_directories(${PROJECT_SOURCE_DIR})
 
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/libraries/statx/cmake/Modules/")
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/../../libraries/statx/cmake/Modules/")
 
 # C++11
 # Compiler-specific C++11 activation.
@@ -113,7 +113,7 @@ endif(STATX_WITH_CERES)
 message("-- Check for Optimo")
 find_path(OPTIMO_INCLUDE_DIR
   NAMES optimo/solvers/bfgs.h
-  PATHS ${CMAKE_SOURCE_DIR}/libraries/optimo /usr/include /usr/local/include)
+  PATHS ${CMAKE_CURRENT_SOURCE_DIR}../../libraries/optimo /usr/include /usr/local/include)
 
 if(OPTIMO_INCLUDE_DIR)
   message("-- Found optimo headers: ${OPTIMO_INCLUDE_DIR}")

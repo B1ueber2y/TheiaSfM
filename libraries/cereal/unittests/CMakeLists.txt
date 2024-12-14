@@ -53,7 +53,7 @@ add_custom_target(valgrind
 # Add the coverage target
 add_custom_target(coverage)
 add_custom_command(TARGET coverage
-  COMMAND "${CMAKE_SOURCE_DIR}/scripts/updatecoverage.sh" ${CMAKE_SOURCE_DIR}
+  COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/scripts/updatecoverage.sh" ${CMAKE_CURRENT_SOURCE_DIR}
   WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/coverage")
 
 # add tests to coverage

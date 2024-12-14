@@ -1,5 +1,3 @@
-#include_directories(${CMAKE_SOURCE_DIR}/include algorithms ext util nn .)
-
 add_definitions(-D_FLANN_VERSION=${FLANN_VERSION})
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/flann/config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/flann/config.h)
